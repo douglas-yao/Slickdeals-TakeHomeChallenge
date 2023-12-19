@@ -1,6 +1,11 @@
 import Row from './Row';
 import useGame from '../hooks/useGame';
 
+/**
+ * GameBoard component represents the main game interface.
+ * It displays the current game state, allows users to start a new game,
+ * and interact with the game tiles.
+ */
 export default function GameBoard() {
   const {
     currentSolution,
