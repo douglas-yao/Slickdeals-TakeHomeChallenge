@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import getRandomSolution from '../utils/getRandomSolution';
 import isLowestValue from '../utils/isLowestValue';
-import useGameTimer from './useGameTimer'; // assuming you have this file
+import useGameTimer from './useGameTimer';
 
 const useGame = () => {
   const [currentSolution, setCurrentSolution] = useState([]);
