@@ -4,7 +4,9 @@ class GameManagementService {
       const randomNumbers = new Set();
 
       while (randomNumbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        let randomNumber = (
+          Math.floor(Math.random() * (max - min + 1)) + min
+        ).toString();
         randomNumbers.add(randomNumber);
       }
 
