@@ -4,11 +4,9 @@ class GameManagementService {
 
     if (isNumber) {
       const randomNumbers = this.generateRandomNumbers();
-      console.log('Random Numbers:', randomNumbers);
       return randomNumbers;
     } else {
       const randomLetters = this.generateRandomLetters();
-      console.log('Random Letters:', randomLetters);
       return randomLetters;
     }
   }
