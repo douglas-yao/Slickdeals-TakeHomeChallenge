@@ -11,6 +11,10 @@ type UseGame = {
   handleTileClick: (clickedIndex: number) => void;
 };
 
+/**
+ * A custom hook for managing game-related logic.
+ * @returns An object containing the game-related values and functions.
+ */
 const useGame: () => UseGame = () => {
   const [currentSolution, setCurrentSolution] = useState<string[]>([]);
   const [score, setScore] = useState<number>(0);
@@ -18,11 +22,19 @@ const useGame: () => UseGame = () => {
 
   const { restartTimer, timeRemaining } = useGameTimer(60, handleTimeout);
 
+  /**
+   * Initiates a new game round.
+   * @returns A promise that resolves when the new game round is started.
+   */
   const startNewGame = async (): Promise<void> => {
     await startNewRound();
     setScore(0);
   };
 
+  /**
+   * Initiates a new game round and updates the game state accordingly.
+   * @returns A promise that resolves when the new game round is started.
+   */
   const startNewRound = async (): Promise<void> => {
     setIsLoading(true);
     try {
@@ -36,6 +48,10 @@ const useGame: () => UseGame = () => {
     }
   };
 
+  /**
+   * Handles the click event on a game tile.
+   * @param clickedIndex - The index of the clicked game tile.
+   */
   const handleTileClick = (clickedIndex: number): void => {
     if (isLowestValue(currentSolution, clickedIndex)) {
       const updatedSolution = [...currentSolution];
@@ -53,6 +69,9 @@ const useGame: () => UseGame = () => {
     }
   };
 
+  /**
+   * Handles the timeout event of the game timer.
+   */
   function handleTimeout(): void {
     startNewRound();
     restartTimer();
