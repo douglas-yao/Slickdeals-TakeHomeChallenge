@@ -53,11 +53,14 @@ const useGame: () => UseGame = () => {
    * @param clickedIndex - The index of the clicked game tile.
    */
   const handleTileClick = (clickedIndex: number): void => {
+    // If the clicked tile is the lowest value, remove it from the displayed elements
     if (isLowestValue(currentSolution, clickedIndex)) {
       const updatedSolution = [...currentSolution];
       updatedSolution.splice(clickedIndex, 1);
       setCurrentSolution(updatedSolution);
 
+      // If there is only one element left, start a new round and add 8 points
+      // Otherwise add 5 points
       if (currentSolution.length === 1) {
         setScore((prevScore) => prevScore + 8);
         startNewRound();
@@ -65,6 +68,7 @@ const useGame: () => UseGame = () => {
         setScore((prevScore) => prevScore + 5);
       }
     } else {
+      // Wrong element clicked, start a new round
       startNewRound();
     }
   };
