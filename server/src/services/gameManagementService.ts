@@ -3,7 +3,7 @@ class GameManagementService {
     if (mode === 'numbers') {
       const randomNumbers = new Set();
 
-      while (randomNumbers.size < 6) {
+      while (randomNumbers.size < 7) {
         let randomNumber = (
           Math.floor(Math.random() * (max - min + 1)) + min
         ).toString();
