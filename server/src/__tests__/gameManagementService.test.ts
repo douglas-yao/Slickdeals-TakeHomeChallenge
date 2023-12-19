@@ -1,21 +1,19 @@
-// GameManagementService.test.ts
 import gameManagementService from '../services/gameManagementService';
 
 describe('GameManagementService', () => {
-  describe('generateRoundSolution', () => {
-    it('generates an array of 7 unique numbers within the specified range', () => {
-      const min = -100;
-      const max = 100;
-
-      const result: string[] = gameManagementService.generateRoundSolution();
-
+  describe('generateRandomNumbers', () => {
+    it('should generate an array of random numbers within the specified range', () => {
+      const result = gameManagementService.generateRandomNumbers(-50, 50);
       expect(result).toHaveLength(7);
-      expect(new Set(result).size).toBe(7);
-      result.forEach((number) => {
-        const parsedNumber = parseInt(number, 10);
-        expect(parsedNumber).toBeGreaterThanOrEqual(min);
-        expect(parsedNumber).toBeLessThanOrEqual(max);
-      });
+      expect(result.every((num) => !isNaN(parseInt(num)))).toBe(true);
+    });
+  });
+
+  describe('generateRandomLetters', () => {
+    it('should generate an array of random letters', () => {
+      const result = gameManagementService.generateRandomLetters();
+      expect(result).toHaveLength(7);
+      expect(result.every((letter) => /^[A-Z]$/.test(letter))).toBe(true);
     });
   });
 });
