@@ -1,4 +1,11 @@
+/**
+ * Service for managing game-related functionality.
+ */
 class GameManagementService {
+  /**
+   * Generates a round solution, either a set of random numbers or letters.
+   * @returns An array containing the generated round solution.
+   */
   generateRoundSolution(): string[] {
     const isNumber = Math.random() < 0.5;
 
@@ -11,6 +18,12 @@ class GameManagementService {
     }
   }
 
+  /**
+   * Generates an array of random numbers within the specified range.
+   * @param min - The minimum value for the random numbers (default: -100).
+   * @param max - The maximum value for the random numbers (default: 100).
+   * @returns An array containing the generated random numbers.
+   */
   generateRandomNumbers(min: number = -100, max: number = 100): string[] {
     const randomNumbers = new Set<string>();
 
@@ -24,6 +37,10 @@ class GameManagementService {
     return Array.from(randomNumbers);
   }
 
+  /**
+   * Generates an array of random letters.
+   * @returns An array containing the generated random letters.
+   */
   generateRandomLetters(): string[] {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const randomLetters = new Set<string>();
