@@ -31,6 +31,11 @@ export default function GameBoard() {
     }
   }
 
+  function handleNewGameButtonClick(): void {
+    getRandomSolution();
+    setScore(0);
+  }
+
   function handleTileClick(index: number): void {
     const lowestElement = getLowestElement(currentSolution);
     const clickedElement = currentSolution[index];
@@ -62,7 +67,7 @@ export default function GameBoard() {
   return (
     <div className="flex flex-col items-center gap-5">
       <h1>GameBoard</h1>
-      <button onClick={getRandomSolution}>New Game</button>
+      <button onClick={handleNewGameButtonClick}>New Game</button>
       <div className="flex gap-10 items-center">
         <Row
           currentSolution={currentSolution}
