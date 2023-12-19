@@ -5,7 +5,10 @@ type TileProps = {
 
 export default function Tile({ solutionElem, onClick }: TileProps) {
   return (
-    <div onClick={onClick}>
+    <div
+      className="cursor-pointer border rounded p-2 shadow-md "
+      onClick={onClick}
+    >
       <span>{solutionElem}</span>
     </div>
   );

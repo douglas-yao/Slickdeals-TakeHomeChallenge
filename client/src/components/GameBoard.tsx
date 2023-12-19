@@ -5,6 +5,7 @@ import Row from './Row';
 export default function GameBoard() {
   const [currentSolution, setCurrentSolution] = useState<string[]>([]);
   const [score, setScore] = useState<number>(0);
+  const [timeRemaining, setTimeRemaining] = useState<number>(60);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function GameBoard() {
     <div className="flex flex-col items-center gap-5">
       <h1>GameBoard</h1>
       <button onClick={getRandomSolution}>New Game</button>
-      <div className="flex gap-10">
+      <div className="flex gap-10 items-center">
         <Row
           currentSolution={currentSolution}
           handleTileClick={handleTileClick}
