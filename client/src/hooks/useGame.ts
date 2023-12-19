@@ -37,9 +37,12 @@ const useGame = () => {
       const updatedSolution = [...currentSolution];
       updatedSolution.splice(index, 1);
       setCurrentSolution(updatedSolution);
-      currentSolution.length === 1
-        ? setScore((prevScore) => prevScore + 8)
-        : setScore((prevScore) => prevScore + 5);
+      if (currentSolution.length === 1) {
+        setScore((prevScore) => prevScore + 8);
+        startNewRound();
+      } else {
+        setScore((prevScore) => prevScore + 5);
+      }
     } else {
       startNewRound();
     }
