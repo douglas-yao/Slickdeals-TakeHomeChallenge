@@ -1,5 +1,19 @@
 class GameManagementService {
-  generateRoundSolution(mode = 'numbers', min = -100, max = 100): string[] {
+  generateRoundSolution(): string[] {
+    const isNumber = Math.random() < 0.5;
+
+    if (isNumber) {
+      const randomNumbers = this.generateRandomNumbers();
+      console.log('Random Numbers:', randomNumbers);
+      return randomNumbers;
+    } else {
+      const randomLetters = this.generateRandomLetters();
+      console.log('Random Letters:', randomLetters);
+      return randomLetters;
+    }
+  }
+
+  generateRandomNumbers(min: number = -100, max: number = 100): string[] {
     const randomNumbers = new Set<string>();
 
     while (randomNumbers.size < 7) {
@@ -10,6 +24,19 @@ class GameManagementService {
     }
 
     return Array.from(randomNumbers);
+  }
+
+  generateRandomLetters(): string[] {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const randomLetters = new Set<string>();
+
+    while (randomLetters.size < 7) {
+      const randomIndex = Math.floor(Math.random() * alphabet.length);
+      const randomLetter = alphabet.charAt(randomIndex);
+      randomLetters.add(randomLetter);
+    }
+
+    return Array.from(randomLetters);
   }
 }
 

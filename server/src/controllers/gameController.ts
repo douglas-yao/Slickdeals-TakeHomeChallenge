@@ -4,9 +4,7 @@ import gameManagementService from '../services/gameManagementService';
 const gameController = {
   startRound: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { mode } = req.body;
-      console.log(mode);
-      const solution = gameManagementService.generateRoundSolution(mode);
+      const solution = gameManagementService.generateRoundSolution();
 
       res.status(200).send({ solution });
     } catch (err) {
