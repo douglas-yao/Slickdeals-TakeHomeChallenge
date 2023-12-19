@@ -8,8 +8,10 @@ export default function GameBoard() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getRandomSolution();
-  }, []);
+    if (currentSolution.length === 0) {
+      getRandomSolution();
+    }
+  }, [currentSolution]);
 
   // Wrap into a hook
   async function getRandomSolution(): Promise<void> {
