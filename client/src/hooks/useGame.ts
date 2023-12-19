@@ -2,19 +2,28 @@ import { useState } from 'react';
 import { isLowestValue, getRandomSolution } from '../utils/index';
 import useGameTimer from './useGameTimer';
 
-const useGame = () => {
-  const [currentSolution, setCurrentSolution] = useState([]);
-  const [score, setScore] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+type UseGame = {
+  currentSolution: string[];
+  score: number;
+  timeRemaining: number;
+  isLoading: boolean;
+  startNewGame: () => Promise<void>;
+  handleTileClick: (clickedIndex: number) => void;
+};
+
+const useGame: () => UseGame = () => {
+  const [currentSolution, setCurrentSolution] = useState<string[]>([]);
+  const [score, setScore] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { restartTimer, timeRemaining } = useGameTimer(60, handleTimeout);
 
-  const startNewGame = async () => {
+  const startNewGame = async (): Promise<void> => {
     await startNewRound();
     setScore(0);
   };
 
-  const startNewRound = async () => {
+  const startNewRound = async (): Promise<void> => {
     setIsLoading(true);
     try {
       const randomSolution = await getRandomSolution();
@@ -27,7 +36,7 @@ const useGame = () => {
     }
   };
 
-  const handleTileClick = (clickedIndex: number) => {
+  const handleTileClick = (clickedIndex: number): void => {
     if (isLowestValue(currentSolution, clickedIndex)) {
       const updatedSolution = [...currentSolution];
       updatedSolution.splice(clickedIndex, 1);
@@ -44,7 +53,7 @@ const useGame = () => {
     }
   };
 
-  function handleTimeout() {
+  function handleTimeout(): void {
     startNewRound();
     restartTimer();
   }
