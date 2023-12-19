@@ -1,8 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import gameManagementService from '../services/gameManagementService';
 
+/**
+ * Controller for game-related routes.
+ */
 const gameController = {
-  startRound: async (req: Request, res: Response, next: NextFunction) => {
+  /**
+   * Starts a new round.
+   * @param req - The request object.
+   * @param res - The response object.
+   */
+  startRound: async (req: Request, res: Response) => {
     try {
       const solution = gameManagementService.generateRoundSolution();
 

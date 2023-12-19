@@ -3,6 +3,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import gameRoutes from '../routes/gameRoutes';
 
+/**
+ * Creates the Express server.
+ * @returns The Express server.
+ */
 function createServer() {
   const app = express();
 
