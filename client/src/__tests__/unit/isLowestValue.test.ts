@@ -1,21 +1,31 @@
 import isLowestValue from '../../utils/isLowestValue';
 
 describe('isLowestValue', () => {
-  it('returns true when clicked element is the lowest in the current solution', () => {
-    const currentSolution = ['5', '8', '3', '2'];
-    const clickedIndex = 3;
-
+  it('should return true if the clicked letter is the lowest in the array', () => {
+    const currentSolution = ['c', 'a', 'f', 'd', 'b'];
+    const clickedIndex = 1;
     const result = isLowestValue(currentSolution, clickedIndex);
-
     expect(result).toBe(true);
   });
 
-  it('returns false when clicked element is not the lowest in the current solution', () => {
-    const currentSolution = ['5', '8', '3', '2'];
-    const clickedIndex = 1;
-
+  it('should return false if the clicked letter is not the lowest in the array', () => {
+    const currentSolution = ['c', 'a', 'f', 'd', 'b'];
+    const clickedIndex = 2;
     const result = isLowestValue(currentSolution, clickedIndex);
+    expect(result).toBe(false);
+  });
 
+  it('should return true if the clicked letter is the only letter in the array', () => {
+    const currentSolution = ['x'];
+    const clickedIndex = 0;
+    const result = isLowestValue(currentSolution, clickedIndex);
+    expect(result).toBe(true);
+  });
+
+  it('should handle an empty array and return false', () => {
+    const currentSolution: string[] = [];
+    const clickedIndex = 0;
+    const result = isLowestValue(currentSolution, clickedIndex);
     expect(result).toBe(false);
   });
 });
