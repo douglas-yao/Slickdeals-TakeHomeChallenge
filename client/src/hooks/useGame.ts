@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import getRandomSolution from '../utils/getRandomSolution';
-import isLowestValue from '../utils/isLowestValue';
+import { isLowestValue, getRandomSolution } from '../utils/index';
 import useGameTimer from './useGameTimer';
 
 const useGame = () => {
