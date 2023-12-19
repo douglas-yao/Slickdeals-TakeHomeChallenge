@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import getRandomSolution from '../utils/getRandomSolution';
+import isLowestValue from '../utils/isLowestValue';
 import useGameTimer from './useGameTimer'; // assuming you have this file
 
 const useGame = () => {
@@ -27,16 +28,12 @@ const useGame = () => {
     }
   };
 
-  const handleTileClick = (index: number) => {
-    const lowestElement = Math.min(
-      ...currentSolution.map((value) => parseInt(value))
-    ).toString();
-    const clickedElement = currentSolution[index];
-
-    if (clickedElement === lowestElement) {
+  const handleTileClick = (clickedIndex: number) => {
+    if (isLowestValue(currentSolution, clickedIndex)) {
       const updatedSolution = [...currentSolution];
-      updatedSolution.splice(index, 1);
+      updatedSolution.splice(clickedIndex, 1);
       setCurrentSolution(updatedSolution);
+
       if (currentSolution.length === 1) {
         setScore((prevScore) => prevScore + 8);
         startNewRound();
